@@ -68,6 +68,7 @@ namespace Science
             buttonConditionalFrequency.AddHandler(Button.ClickEvent, new RoutedEventHandler(buttonConditionalFrequencyHandler));
 
             Grid.SetRow(buttonConditionalFrequency, 0);
+            Grid.SetColumn(buttonConditionalFrequency, 1);
             GridMain.Children.Add(buttonConditionalFrequency);
 
             //Добавялем кнопку для оценки Хи квадрат
@@ -76,6 +77,7 @@ namespace Science
             buttonHiSquare.AddHandler(Button.ClickEvent, new RoutedEventHandler(buttonHiSquareClickerHandler));
 
             Grid.SetRow(buttonHiSquare, 0);
+            Grid.SetColumn(buttonHiSquare, 0);
             GridMain.Children.Add(buttonHiSquare);
 
 

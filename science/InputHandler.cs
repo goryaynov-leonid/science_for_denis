@@ -15,7 +15,7 @@ namespace Science
         public StatisticData OpenFile()
         {
             //Открытие файла на чтение
-            String fileName = "";
+            string fileName = "";
             OpenFileDialog openFileDialog = new OpenFileDialog(); //TODO вставить фильтр на excel
             //openFileDialog.InitialDirectory = "C\\Users\\Denis\\OneDrive\\Документы\\Аспирантура";
             openFileDialog.RestoreDirectory = true;

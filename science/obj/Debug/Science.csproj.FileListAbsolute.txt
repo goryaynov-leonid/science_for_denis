@@ -53,3 +53,30 @@ D:\Google Drive\Work\Science\Science\obj\Debug\Science.Properties.Resources.reso
 D:\Google Drive\Work\Science\Science\obj\Debug\Science.csproj.GenerateResource.cache
 D:\Google Drive\Work\Science\Science\obj\Debug\Science.csproj.CoreCompileInputs.cache
 D:\Google Drive\Work\Science\Science\obj\Debug\Science.csproj.CopyComplete
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.csprojAssemblyReference.cache
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.csproj.ResolveComReference.cache
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\MainWindow.g.cs
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\ScienceExcelReport.g.cs
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\ScienceHome.g.cs
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\SimpleConditionalFrequencyPage.g.cs
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\App.g.cs
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science_MarkupCompile.cache
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science_MarkupCompile.lref
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.exe
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.pdb
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\Science.exe.config
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\Science.exe
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\Science.pdb
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\MoreLinq.dll
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\System.ValueTuple.dll
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\MoreLinq.xml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\bin\Debug\System.ValueTuple.xml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\MainWindow.baml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\ScienceExcelReport.baml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\ScienceHome.baml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\SimpleConditionalFrequencyPage.baml
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.g.resources
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.Properties.Resources.resources
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.csproj.GenerateResource.cache
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.csproj.CoreCompileInputs.cache
+C:\Users\lbg99\Source\Repos\goryaynov-leonid\science_for_denis\Science\obj\Debug\Science.csproj.CopyComplete
