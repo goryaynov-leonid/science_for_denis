@@ -39,6 +39,7 @@ namespace Science
             //Строим сетку из кода. Тренируюсь с возможностями
             GridMain.ColumnDefinitions.Add(new ColumnDefinition());
             GridMain.ColumnDefinitions.Add(new ColumnDefinition());
+            GridMain.ColumnDefinitions.Add(new ColumnDefinition());
             GridMain.RowDefinitions.Add(new RowDefinition());
             GridMain.RowDefinitions.Add(new RowDefinition());
 
@@ -80,8 +81,28 @@ namespace Science
             Grid.SetColumn(buttonHiSquare, 0);
             GridMain.Children.Add(buttonHiSquare);
 
+            //Добавляем кнопку дял проверки однородности
+            Button buttonCheckHomogeneity = new Button();
+            buttonCheckHomogeneity.Content = "Проверка однородности";
+            buttonCheckHomogeneity.AddHandler(Button.ClickEvent, new RoutedEventHandler(buttonCheckHomogeneityClickerHandler));
+
+            Grid.SetRow(buttonCheckHomogeneity, 0);
+            Grid.SetColumn(buttonCheckHomogeneity, 2);
+            GridMain.Children.Add(buttonCheckHomogeneity);
+
 
             InitializeComponent();
+        }
+
+        public void buttonCheckHomogeneityClickerHandler(object snder, RoutedEventArgs e)
+        {
+            ListBox listFirstParameter = (ListBox)GridMain.Children[0];
+            ListBox listSecondParameter = (ListBox)GridMain.Children[1];
+
+            int firstParametr = listFirstParameter.SelectedIndex;
+            int secondParametr = listSecondParameter.SelectedIndex;
+
+            HomogeneityResult result = this.data.CountHomogeneityParam(firstParametr, secondParametr);
         }
 
         public void buttonHiSquareClickerHandler(object sender, RoutedEventArgs e)
@@ -92,7 +113,7 @@ namespace Science
             //По логике выбираем один элемент из первого листа
 
             int firstParametr = listFirstParameter.SelectedIndex;
-            int secondParamtr = listSecondParameter.SelectedIndex;
+            int secondParametr = listSecondParameter.SelectedIndex;
 
         }
 

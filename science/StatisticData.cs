@@ -77,5 +77,53 @@ namespace Science
 
             return res;
         }
+
+        public HomogeneityResult CountHomogeneityParam(int index1, int index2)
+        {
+            HomogeneityResult res = new HomogeneityResult();
+            res.Param1Probability = new Dictionary<double, double>();
+            res.Param2Probability = new Dictionary<double, double>();
+            List<List<double>> SortedData = new List<List<double>>(2);
+            SortedData.Add(new List<double>());
+            SortedData.Add(new List<double>());
+            for (int i = 0; i < Data.Count; i++)
+            {
+                SortedData[0].Add(Convert.ToDouble(this.Data[i][index1]));
+            }
+
+            for (int i = 0; i < Data.Count; i++)
+            {
+                SortedData[1].Add(Convert.ToDouble(this.Data[i][index2]));
+            }
+
+            SortedData[0].Sort((x, y) => x.CompareTo(y));
+            SortedData[1].Sort((x, y) => x.CompareTo(y));
+            int Count1 = 0;
+            for (int i = 0; i < SortedData[0].Count; i++)
+            {
+                while (i < SortedData[0].Count - 1 && SortedData[0][i] == SortedData[0][i + 1])
+                {
+                    i++;
+                    Count1++;
+                }
+                Count1++;
+                res.Param1Probability.Add(SortedData[0][i], (double)Count1 / (double)SortedData[0].Count);
+            }
+            int Count2 = 0;
+            for (int i = 0; i < SortedData[1].Count; i++)
+            {
+                while (i < SortedData[1].Count - 1 && SortedData[1][i] == SortedData[1][i + 1])
+                {
+                    i++;
+                    Count2++;
+                }
+                Count2++;
+                res.Param2Probability.Add(SortedData[1][i], (double)Count2 / (double)SortedData[1].Count);
+            }
+
+            
+
+            return res;
+        }
     }
 }

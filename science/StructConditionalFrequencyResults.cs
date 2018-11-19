@@ -20,4 +20,11 @@ namespace Science
         public Dictionary<string, (int, int)> data;
         public double LevelOfConfidence;
     }
+
+    struct HomogeneityResult
+    {
+        public double Result;
+        public Dictionary<double, double> Param1Probability;
+        public Dictionary<double, double> Param2Probability;
+    }
 }
