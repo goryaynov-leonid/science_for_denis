@@ -8,13 +8,24 @@ namespace Science
 {
     class StatisticData
     {
-        public List<String> Header { get; set; }
-        public List<List<String>> Data { get; set; }
+        public List<string> Header { get; set; }
+        public List<List<string>> Data { get; set; }
+        public List<List<string>> NewData { get; set; }
 
-        public StatisticData(List<String> header, List<List<String>> data)
+        public StatisticData(List<string> header, List<List<string>> data)
         {
             this.Header = header;
             this.Data = data;
+            List<List<string>> TempData = new List<List<string>>();
+            for (int i = 0; i < this.Data[0].Count; i++)
+            {
+                TempData.Add(new List<string>());
+                for (int j = 0; j < this.Data.Count; j++)
+                {
+                    TempData[i].Add(this.Data[j][i]);
+                }
+            }
+            this.NewData = TempData;
         }
 
         public ConditionalFrequencyResults CountCounditionalFrequency(int index1, int index2)
@@ -30,7 +41,7 @@ namespace Science
             var firstParamValue = (from x in this.Data
                                    orderby x[index1]
                                    select x[index1]).Distinct();
-            
+
             //А теперь второго
             var secondParamValue = (from x in this.Data
                                     orderby x[index2]
@@ -62,7 +73,7 @@ namespace Science
             //Выберем уникальные значения первого параметра
             foreach (int item in indexes)
             {
-                firstParamValue.Add(data.Select(x => x[item]).Distinct().OrderBy(x=>x).ToList());
+                firstParamValue.Add(data.Select(x => x[item]).Distinct().OrderBy(x => x).ToList());
             }
 
             //А теперь второго
@@ -83,45 +94,32 @@ namespace Science
             HomogeneityResult res = new HomogeneityResult();
             res.Param1Probability = new Dictionary<double, double>();
             res.Param2Probability = new Dictionary<double, double>();
-            List<List<double>> SortedData = new List<List<double>>(2);
+            List<List<double>> SortedData = new List<List<double>>();
             SortedData.Add(new List<double>());
             SortedData.Add(new List<double>());
-            for (int i = 0; i < Data.Count; i++)
-            {
-                SortedData[0].Add(Convert.ToDouble(this.Data[i][index1]));
-            }
-
-            for (int i = 0; i < Data.Count; i++)
-            {
-                SortedData[1].Add(Convert.ToDouble(this.Data[i][index2]));
-            }
-
-            SortedData[0].Sort((x, y) => x.CompareTo(y));
-            SortedData[1].Sort((x, y) => x.CompareTo(y));
-            int Count1 = 0;
-            for (int i = 0; i < SortedData[0].Count; i++)
-            {
-                while (i < SortedData[0].Count - 1 && SortedData[0][i] == SortedData[0][i + 1])
-                {
-                    i++;
-                    Count1++;
-                }
-                Count1++;
-                res.Param1Probability.Add(SortedData[0][i], (double)Count1 / (double)SortedData[0].Count);
-            }
-            int Count2 = 0;
-            for (int i = 0; i < SortedData[1].Count; i++)
-            {
-                while (i < SortedData[1].Count - 1 && SortedData[1][i] == SortedData[1][i + 1])
-                {
-                    i++;
-                    Count2++;
-                }
-                Count2++;
-                res.Param2Probability.Add(SortedData[1][i], (double)Count2 / (double)SortedData[1].Count);
-            }
-
             
+            //Выберем нужные два столбца
+            SortedData[0].AddRange(this.NewData[index1].Select(x => Convert.ToDouble(x)));
+            SortedData[1].AddRange(this.NewData[index2].Select(x => Convert.ToDouble(x)));
+
+            int Count1 = 0;
+            int Count2 = 0;
+
+            //Посчитаем вероятности для первого столбца
+            foreach (var group in SortedData[0].GroupBy(x => x).OrderBy(x => x.Key))
+            {
+                Count1 += group.Count();
+                res.Param1Probability.Add(group.Key, (double)Count1 / (double)SortedData[0].Count);
+            }
+
+            //Посчитаем вероятности для второго столбца
+            foreach (var group in SortedData[1].GroupBy(x => x).OrderBy(x => x.Key))
+            {
+                Count2 += group.Count();
+                res.Param1Probability.Add(group.Key, (double)Count2 / (double)SortedData[0].Count);
+            }
+
+
 
             return res;
         }
