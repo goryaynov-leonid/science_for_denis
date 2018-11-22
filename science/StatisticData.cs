@@ -92,8 +92,9 @@ namespace Science
         public HomogeneityResult CountHomogeneityParam(int index1, int index2)
         {
             HomogeneityResult res = new HomogeneityResult();
-            res.Param1Probability = new Dictionary<double, double>();
-            res.Param2Probability = new Dictionary<double, double>();
+            res.ParamProbability = new Dictionary<double, double>[2];
+            res.ParamProbability[0] = new Dictionary<double, double>();
+            res.ParamProbability[1] = new Dictionary<double, double>();
             List<List<double>> SortedData = new List<List<double>>();
             SortedData.Add(new List<double>());
             SortedData.Add(new List<double>());
@@ -109,17 +110,38 @@ namespace Science
             foreach (var group in SortedData[0].GroupBy(x => x).OrderBy(x => x.Key))
             {
                 Count1 += group.Count();
-                res.Param1Probability.Add(group.Key, (double)Count1 / (double)SortedData[0].Count);
+                res.ParamProbability[0].Add(group.Key, (double)Count1 / (double)SortedData[0].Count);
             }
 
             //Посчитаем вероятности для второго столбца
             foreach (var group in SortedData[1].GroupBy(x => x).OrderBy(x => x.Key))
             {
                 Count2 += group.Count();
-                res.Param1Probability.Add(group.Key, (double)Count2 / (double)SortedData[0].Count);
+                res.ParamProbability[1].Add(group.Key, (double)Count2 / (double)SortedData[0].Count);
             }
 
+            double[] previousProbability = { 0, 0 };
+            res.Result = 0;
+            List<(double, int)> allData = new List<(double, int)>();
+            allData.AddRange(SortedData[0].Distinct().Select(x => (x, 0)));
+            allData.AddRange(SortedData[1].Distinct().Select(x => (x, 1)));
+            allData.Sort();
 
+            foreach (var tmpData in allData)
+            {
+                double tmp;
+                if (res.ParamProbability[(tmpData.Item2 == 1 ? 0 : 1)].TryGetValue(tmpData.Item1, out tmp))
+                {
+                    res.Result = Math.Max(res.Result, Math.Abs(res.ParamProbability[0][tmpData.Item1] - res.ParamProbability[1][tmpData.Item1]));
+                    previousProbability[0] = res.ParamProbability[0][tmpData.Item1];
+                    previousProbability[1] = res.ParamProbability[1][tmpData.Item1];
+                }
+                else
+                {
+                    res.Result = Math.Max(res.Result, Math.Abs(res.ParamProbability[tmpData.Item2][tmpData.Item1] - previousProbability[(tmpData.Item2 == 1 ? 0 : 1)]));
+                    previousProbability[tmpData.Item2] = res.ParamProbability[tmpData.Item2][tmpData.Item1];
+                }
+            }
 
             return res;
         }

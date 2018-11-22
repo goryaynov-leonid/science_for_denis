@@ -24,7 +24,6 @@ namespace Science
     struct HomogeneityResult
     {
         public double Result;
-        public Dictionary<double, double> Param1Probability;
-        public Dictionary<double, double> Param2Probability;
+        public Dictionary<double, double>[] ParamProbability;
     }
 }
